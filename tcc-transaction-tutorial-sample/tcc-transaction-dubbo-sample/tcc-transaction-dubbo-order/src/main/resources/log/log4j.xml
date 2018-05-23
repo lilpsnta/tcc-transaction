@@ -17,7 +17,7 @@
     </appender>
 
     <root>
-        <level value="INFO"/>
+        <level value="debug"/>
         <appender-ref ref="asyncAppender"/>
     </root>
 

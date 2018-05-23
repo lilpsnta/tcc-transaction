@@ -54,13 +54,9 @@ public class RedPacketTradeOrderServiceImpl implements RedPacketTradeOrderServic
             );
 
             try {
-
                 tradeOrderRepository.insert(tradeOrder);
-
                 RedPacketAccount transferFromAccount = redPacketAccountRepository.findByUserId(tradeOrderDto.getSelfUserId());
-
                 transferFromAccount.transferFrom(tradeOrderDto.getAmount());
-
                 redPacketAccountRepository.save(transferFromAccount);
             } catch (DataIntegrityViolationException e) {
                 //this exception may happen when insert trade order concurrently, if happened, ignore this insert operation.
